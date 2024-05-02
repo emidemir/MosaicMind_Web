@@ -7,21 +7,27 @@ export default function Machines() {
 	const [machines, setMachines] = useState({});
 
 	useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(URL);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const json = await response.json();
-				setMachines(json[0]);
-            } catch (error) {
-                console.error('Failed to fetch:', error);
-            }
+       
+        const callFetchData = async () => {
+            return await fetchData(); 
         };
 
-        fetchData();
+        callFetchData();
+        
     }, []);
+    
+    const fetchData = async () => {
+        try {
+            const response = await fetch(URL);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const json = await response.json();
+            setMachines(json[0]);
+        } catch (error) {
+            console.error('Failed to fetch:', error);
+        }
+    };
 
     const [isLoading, setIsLoading] = useState(true);
 
