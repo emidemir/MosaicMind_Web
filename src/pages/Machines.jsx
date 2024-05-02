@@ -8,6 +8,7 @@ export default function Machines() {
 
 	useEffect(() => {
        
+        
         const callFetchData = async () => {
             return await fetchData(); 
         };
@@ -23,6 +24,7 @@ export default function Machines() {
                 throw new Error('Network response was not ok');
             }
             const json = await response.json();
+            console.log(json);
             setMachines(json[0]);
         } catch (error) {
             console.error('Failed to fetch:', error);
@@ -59,16 +61,6 @@ export default function Machines() {
                 <div className="text-1">Choose a Machine</div>
                 <br />
                     <div className="machines">
-                    {machines['r1-update-c'] && (
-            <Machine
-                name="Machine 1"
-                status="Online"
-                updates={machines['r1-update-c']}
-                positiveFeedback={machines['r1-correct-c']}
-                negativeFeedback={machines['r1-fail-c']}
-                successRate={Math.round((machines['r1-correct-c'] / machines['r1-fail-c']) * 100)}
-            />
-        )}
                         <Machine name="Machine 1" status="Online" updates={machines['r1-update-c']} positiveFeedback={machines['r1-correct-c']} negativeFeedback={machines['r1-fail-c']} successRate={Math.round((machines['r1-correct-c']/machines['r1-fail-c'])*100)}/>
                         <Machine name="Machine 2" status="Online" updates={machines['r2-update-c']} positiveFeedback={machines['r2-correct-c']} negativeFeedback={machines['r2-fail-c']} successRate={Math.round((machines['r2-correct-c']/machines['r2-fail-c'])*100)}/>
                         <Machine name="Machine 3" status="Online" updates={machines['r3-update-c']} positiveFeedback={machines['r3-correct-c']} negativeFeedback={machines['r3-fail-c']} successRate={Math.round((machines['r3-correct-c']/machines['r3-fail-c'])*100)}/>
