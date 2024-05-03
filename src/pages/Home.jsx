@@ -10,9 +10,6 @@ export default function Home() {
                     <Link to="/signin">
                         <button className='orangeButton'>Sign In</button>
                     </Link>
-                    <Link to="/signup">
-                        <button className='orangeButton'>Sign Up</button>
-                    </Link>
                 </div>
                 <div className="text-1">MosaicMind V.1</div>
             </div>
